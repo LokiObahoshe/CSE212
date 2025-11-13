@@ -32,7 +32,14 @@ public class Maze
     /// </summary>
     public void MoveLeft()
     {
-        // FILL IN CODE
+        // Made a new variable that looks at the current cell's movement options using the characters position. Every other function has the same variable used
+        var moves = _mazeMap[(_currX, _currY)];
+        // 0 means left. If the moves do not = 0, that means there's a wall to the left and that is why the exception is thrown
+        if (!moves[0])
+            throw new InvalidOperationException("Can't go that way!");
+
+        // if the path is open to the left, the character moves to the left once
+        _currX -= 1;
     }
 
     /// <summary>
@@ -41,7 +48,13 @@ public class Maze
     /// </summary>
     public void MoveRight()
     {
-        // FILL IN CODE
+        var moves = _mazeMap[(_currX, _currY)];
+        // Just like before, 1 means right. If the moves do not = 1, that means there's a wall to the right and that is why the exception is thrown
+        if (!moves[1])
+            throw new InvalidOperationException("Can't go that way!");
+
+        // Just like before, if the path is open to the right, the character moves to the right once
+        _currX += 1;
     }
 
     /// <summary>
@@ -50,7 +63,13 @@ public class Maze
     /// </summary>
     public void MoveUp()
     {
-        // FILL IN CODE
+        var moves = _mazeMap[(_currX, _currY)];
+        // Just like before, 2 means up. If the moves do not = 2, that means there's a wall above and that is why the exception is thrown
+        if (!moves[2])
+            throw new InvalidOperationException("Can't go that way!");
+
+        // Just like before, if the path is open above, the character moves up once
+        _currY -= 1;
     }
 
     /// <summary>
@@ -59,7 +78,13 @@ public class Maze
     /// </summary>
     public void MoveDown()
     {
-        // FILL IN CODE
+        var moves = _mazeMap[(_currX, _currY)];
+        // Just like before, 3 means down. If the moves do not = 3, that means there's a wall below and that is why the exception is thrown
+        if (!moves[3])
+            throw new InvalidOperationException("Can't go that way!");
+
+        // Just like before, if the path is open below, the character moves down once
+        _currY += 1;
     }
 
     public string GetStatus()
